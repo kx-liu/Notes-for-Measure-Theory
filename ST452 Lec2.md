@@ -1,103 +1,106 @@
-# ST452 Probability and Mathematical Statistics
+# Chapter 2 Random Variable
 
-## Lecture 2 Random Variable
+Let $(\Omega,\mathcal{F})$ be a measurable space.
 
-Let $(\Omega,\mathscr{F})$ be a measurable space.
+## Definition 1 ($\sigma$-measurable function)
 
-### Definition 1 ($\sigma$-measurable function)
+Suppose that $h:\Omega\to\mathbb{R}$. For $A\subseteq\mathbb{R}$, define $h^{-1}(A):=\lbrace \omega\in\Omega:h(w)\in A\rbrace$. We say that the function $h$ is $\mathcal{F}$-measurable ($h\in m\mathcal{F}$, where $m\mathcal{F}$ is the class of $\mathcal{F}$-measurable functions on $\Omega$), if
 
-Suppose that $h:\Omega\to\mathbb{R}$. For $A\subseteq\mathbb{R}$, define $h^{-1}(A):=\set{\omega\in\Omega:h(w)\in A}$. We say that the function $h$ is $\mathscr{F}$-measurable ($h\in m\mathscr{F}$, where $m\mathscr{F}$ is the class of $\mathscr{F}$-measurable functions on $\Omega$), if
 $$
-\forall B\in\mathscr{B}(\mathbb{R}):h^{-1}(B)\in\mathscr{F}
+\forall B\in\mathcal{B}(\mathbb{R}):h^{-1}(B)\in\mathcal{F}
 $$
-or to say that $h^{-1}:\mathscr{B}\to\mathscr{F}$.
 
-The picture of $\mathscr{F}$-measurable function $h$ is
+or to say that $h^{-1}:\mathcal{B}\to\mathcal{F}$.
+
+The picture of $\mathcal{F}$-measurable function $h$ is
+
 $$
 \begin{aligned}
 h&:\Omega\to\mathbb{R}\\
-h^{-1}&:\mathscr{B}\to\mathscr{F}
+h^{-1}&:\mathcal{B}\to\mathcal{F}
 \end{aligned}
 $$
 
-### Theorem 1 (Generation)
+## Theorem 1 (Generation)
 
-Let $\mathscr{C}$ be a family of subsets. If $\sigma(\mathscr{C})=\mathscr{B}$, and $h^{-1}(\mathscr{C})\subset\mathscr{F}$, then $h\in m\mathscr{F}$.
+Let $\mathcal{C}$ be a family of subsets. If $\sigma(\mathcal{C})=\mathcal{B}$, and $h^{-1}(\mathcal{C})\subset\mathcal{F}$, then $h\in m\mathcal{F}$.
 
-#### Proof of theorem 1
+### Proof of theorem 1
 
-Assert $\mathscr{A}:=\set{B\in\mathscr{B}: h^{-1}(B)\in\mathscr{F}}$ is a $\sigma$-algebra (**Prove it!!)**. $\mathscr{A}\supset\mathscr{C}$, hence $\mathscr{A}\supset\sigma(\mathscr{C})=\mathscr{B}$, which means each Borel set is the subset of $\mathscr{A}$, that is $\forall B\in\mathscr{B}: h^{-1}(B)\in\mathscr{A}$.
+Assert $\mathcal{A}:=\lbrace B\in\mathcal{B}: h^{-1}(B)\in\mathcal{F} \rbrace$ is a $\sigma$-algebra (**Prove it!!)**. $\mathcal{A}\supset\mathcal{C}$, hence $\mathcal{A}\supset\sigma(\mathcal{C})=\mathcal{B}$, which means each Borel set is the subset of $\mathcal{A}$, that is $\forall B\in\mathcal{B}: h^{-1}(B)\in\mathcal{A}$.
 
-#### Corollary of theorem 1
+### Corollary of theorem 1
 
-Suppose $\Omega$ is a topological space, and the function $h:\Omega\to\mathbb{R}$ is continuous. Then, $h\in\mathscr{F}$. ($\sigma(\text{all open sets})=\mathscr{B}$, since $h$ is continuous, $h^{-1}(\text{open set})\subset\Omega$, thus $h\in\mathscr{F}$)
+Suppose $\Omega$ is a topological space, and the function $h:\Omega\to\mathbb{R}$ is continuous. Then, $h\in\mathcal{F}$. 
 
-### Lemma 1
+Proof: $\sigma(\text{all open sets})=\mathcal{B}$, since $h$ is continuous, $h^{-1}(\text{open set})\subset\Omega$, thus $h\in\mathcal{F}$.
 
-If $\lambda\in\mathbb{R}$ and $g_1,g_2\in\mathscr{F}$, then $g_1+g_2\in\mathscr{F}$, $\lambda g_1\in\mathscr{F}$.
+## Lemma 1
 
-### Lemma 2
+If $\lambda\in\mathbb{R}$ and $g_1,g_2\in\mathcal{F}$, then $g_1+g_2\in\mathcal{F}$, $\lambda g_1\in\mathcal{F}$.
 
-Let $(g_n)_{n\geq1}\in\mathscr{F}$, then 
+## Lemma 2
 
-1. $\inf_ng_n\in\mathscr{F}$
+Let $(g_n)_{n\geq1}\in\mathcal{F}$, then 
 
-2. $\lim\inf g_n\in\mathscr{F}$
+1. $\inf_ng_n\in\mathcal{F}$
+2. $\lim\inf g_n\in\mathcal{F}$
+3. $\lim\sup g_n\in\mathcal{F}$
+4. $\lbrace \omega:\lim_ng_n(\omega)\text{ exists in }\mathbb{R} \rbrace\in\mathcal{F}$
 
-3. $\lim\sup g_n\in\mathscr{F}$
-4. $\set{\omega:\lim_ng_n(\omega)\text{ exists in }\mathbb{R}}\in\mathscr{F}$
+### Proof of Lemma 2
 
-#### Proof of Lemma 2
-
-1. $\forall\alpha\in\mathbb{R}:\set{\inf_ng_n\geq\alpha}:=\set{\omega\in\Omega:\inf_ng_n(w)\geq\alpha}\in\mathscr{F}\implies\inf_ng_n\in\mathscr{F}$, since $\sigma([\alpha,\infty):\alpha\in\mathbb{R})=\mathscr{B}$, and $\inf_n g_n^{-1}([\alpha,\infty))=\set{\omega\in\Omega:\inf_ng_n(w)\geq\alpha}=\set{\inf_ng_n\geq\alpha}=\bigcap_n\set{g_n\geq\alpha}\in\mathscr{F}$
-
+1. $\forall\alpha\in\mathbb{R}:\lbrace\inf_ng_n\geq\alpha\rbrace:=\lbrace\omega\in\Omega:\inf_ng_n(w)\geq\alpha\rbrace\in\mathcal{F}\implies\inf_ng_n\in\mathcal{F}$, since $\sigma([\alpha,\infty):\alpha\in\mathbb{R})=\mathcal{B}$, and $\inf_n g_n^{-1}([\alpha,\infty))=\lbrace\omega\in\Omega:\inf_ng_n(w)\geq\alpha\rbrace=\lbrace\inf_ng_n\geq\alpha\rbrace=\bigcap_n\lbrace g_n\geq\alpha\rbrace\in\mathcal{F}$
 2. Prove it!
 3. Prove it!
-4. $\set{\omega:\lim_ng_n(\omega)\text{ exists in }\mathbb{R}}=\set{\omega\in\Omega:\lim\sup g_n(\omega)=\lim\inf g_n(\omega)}\cap\set{\omega\in\Omega:\lim\sup g_n(\omega)<\infty}\cap\set{\omega\in\Omega:\lim\inf g_n(\omega)>-\infty}\in\mathscr{F}$
+4. $\lbrace\omega:\lim_ng_n(\omega)\text{ exists in }\mathbb{R}\rbrace=\lbrace\omega\in\Omega:\lim\sup g_n(\omega)=\lim\inf g_n(\omega)\rbrace\cap\lbrace\omega\in\Omega:\lim\sup g_n(\omega)<\infty\rbrace\cap\lbrace\omega\in\Omega:\lim\inf g_n(\omega)>-\infty\rbrace\in\mathcal{F}$
 
-#### Example
+### Example
 
-Let $\Omega=\set{H,T}^{\mathbb{N}}$, that is tossing a coin n times. $A_{n,H}:=\set{\omega:\omega_n=H}$, $A_{n,T}:=\set{\omega:\omega_n=T}$, $\mathscr{F}:=\sigma(A_{n,\omega};n\in\mathbb{N},\omega\in\set{H,T})$. $X_n=1$ if $\omega_n=H$, $X_n=0$ otherwise. $S_n=\sum_{i=1}^nX_i$. $\Lambda=\set{\omega:\lim_{n\to\infty}\frac{S_n}{n}=p\in(0,1)}\in\mathscr{F}$. $\mathscr{F}=\sigma(X_m:m\leq n)\in\mathscr{F}$.
+Let $\Omega=\lbrace H,T\rbrace^{\mathbb{N}}$, that is tossing a coin n times. $A_{n,H}:=\lbrace\omega:\omega_n=H\rbrace$, $A_{n,T}:=\lbrace\omega:\omega_n=T\rbrace$, $\mathcal{F}:=\sigma(A_{n,\omega};n\in\mathbb{N}$, $\omega\in\lbrace H,T\rbrace)$. $X_n=1$ if $\omega_n=H$, $X_n=0$ otherwise. $S_n=\sum_{i=1}^nX_i$. $\Lambda=\lbrace\omega:\lim_{n\to\infty}\frac{S_n}{n}=p\in(0,1)\rbrace\in\mathcal{F}$. $\mathcal{F}=\sigma(X_m\leq n)\in\mathcal{F}$.
 
-### $\sigma$-algebras generated by RVs
+## $\sigma$-algebras generated by RVs
 
-In the above example, $\mathscr{F}_n=\sigma(X_m:m\leq n)$ is the smallest $\sigma$-algebra that makes all $X_m$, $m=1,\dots,n$ are measurable. Any collection to $(X_i)_{i\in\mathcal{I}}$ can be extended.
+In the above example, $\mathcal{F}_n=\sigma(X_m:m\leq n)$ is the smallest $\sigma$-algebra that makes all $X_m$, $m=1,\dots,n$ are measurable. Any collection to $(X_i)\_{i\in\mathcal{I}}$ can be extended.
 
-### Definition 2 (Distribution function and law of X)
+## Definition 2 (Distribution function and law of X)
 
-Suppose $X$ is a r.v. on $(\Omega, \mathscr{F}, \mathbb{P})$. Define the law of $X$ by
+Suppose $X$ is a r.v. on $(\Omega, \mathcal{F}, \mathbb{P})$. Define the law of $X$ by
+
 $$
-\mathscr{L}_X:=\mathbb{P}\circ X^{-1}
+\mathcal{L}_X:=\mathbb{P}\circ X^{-1}
 $$
-Observe that $\mathscr{L}_X$ is a set function on $\mathscr{B}$, and it is a probability measure on $\mathscr{B}$. (**Prove it!!**)
 
-Recall $\mathscr{B}=\sigma((-\infty,\alpha]:\alpha\in\mathbb{R})$. $\{(-\infty,\alpha]:\alpha\in\mathbb{R}\}$ is a $\pi$-system. If we want to characterize the probability measure $\mathscr{L}_X$, we know that it is enough to look at the behaviour of the probability measure on $\pi$-system.
+Observe that $\mathcal{L}_X$ is a set function on $\mathcal{B}$, and it is a probability measure on $\mathcal{B}$. (**Prove it!!**)
+
+Recall $\mathcal{B}=\sigma((-\infty,\alpha]:\alpha\in\mathbb{R})$. $\\{(-\infty,\alpha]:\alpha\in\mathbb{R}\\}$ is a $\pi$-system. If we want to characterize the probability measure $\mathcal{L}_X$, we know that it is enough to look at the behaviour of the probability measure on $\pi$-system.
 
 Therefore, define the distribution function as follows:
+
 $$
-F_X(\alpha):=\mathscr{L}_X((-\infty,\alpha]),\qquad\alpha\in\mathbb{R}
+F_X(\alpha):=\mathcal{L}_X((-\infty,\alpha]),\qquad\alpha\in\mathbb{R}
 $$
 
-### Properties of $F_X$
+## Properties of $F_X$
 
 - $F_X:\mathbb{R}\to[0,1]$
 - $F_X(x)\leq F_X(y)$ if $x\leq y$, that is $F_X$ is non-decreasing
 - $\lim_{x\to\infty}F_X(x)=1$   ($=\mathbb{P}(X<\infty)$)
 - $\lim_{x\to-\infty}F_X(x)=0$   ($=\mathbb{P}(X>-\infty)$)
-- $\mathscr{F}$ is right continuous, i.e. $F_X(x)=\lim_{y\downarrow x}F_X(y)$
+- $\mathcal{F}$ is right continuous, i.e. $F_X(x)=\lim_{y\downarrow x}F_X(y)$
 
-### Existence of a RV with a given distribution
+## Existence of a RV with a given distribution
 
-Let $F$ be a distribution function with above properties. Then, exists a r.v. on $([0,1],\mathscr{B}[0,1],Leb)$, such that $F=\mathscr{L}_X$, is a probability space.
+Let $F$ be a distribution function with above properties. Then, exists a r.v. on $([0,1],\mathcal{B}[0,1],Leb)$, such that $F=\mathcal{L}_X$, is a probability space.
 
-### Theorem 2 (The Monotone-Class Theorem)
+## Theorem 2 (The Monotone-Class Theorem)
 
 Analogue of $\pi$-$\lambda$ theorem for measurable functions.
 
-Let $\mathscr{H}$ be a class of bouned functions from a set $\Omega$ into $\mathbb{R}$ satisfying the following conditions:
+Let $\mathcal{H}$ be a class of bouned functions from a set $\Omega$ into $\mathbb{R}$ satisfying the following conditions:
 
-1. $\mathscr{H}$ is a vector space over $\mathbb{R}$
-2. the constant function $\mathbb{1}$ is an element of $\mathscr{H}$
-3. if $(f_n)$ is a sequence of non-negative functions in $\mathscr{H}$ such that $f_n\uparrow f$ where $f$ is a bounded functions on $\Omega$, then $f\in\mathscr{H}$.
+1. $\mathcal{H}$ is a vector space over $\mathbb{R}$
+2. the constant function $\mathbb{1}$ is an element of $\mathcal{H}$
+3. if $(f_n)$ is a sequence of non-negative functions in $\mathcal{H}$ such that $f_n\uparrow f$ where $f$ is a bounded functions on $\Omega$, then $f\in\mathcal{H}$.
 
-Then, if $\mathscr{H}$ contains the indicator function of every set in some $\pi$-system $\mathcal{I}$, then $\mathscr{H}$ contains every bouned $\sigma(\mathcal{I})$-measurable function on $\Omega$.
+Then, if $\mathcal{H}$ contains the indicator function of every set in some $\pi$-system $\mathcal{I}$, then $\mathcal{H}$ contains every bouned $\sigma(\mathcal{I})$-measurable function on $\Omega$.
